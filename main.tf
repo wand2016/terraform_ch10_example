@@ -33,3 +33,10 @@ module "ecs_task_execution_role" {
   identifier = "ecs-tasks.amazonaws.com"
   policy = data.aws_iam_policy_document.ecs_task_execution.json
 }
+
+
+resource "aws_cloudwatch_event_rule" "example_batch" {
+  name = "example-batch"
+  description = "important batch process"
+  schedule_expression = "cron(*/2 * * * ? *)"
+}
